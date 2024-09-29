@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTf-8">
+        <title>객체 생성</title>
+
+        <script>
+            //new object객체
+            function register(){this.nStudent++; }
+            function unregister(){this.nStudent--; }
+            function getStudentCount(){return this.nStudent;}
+            </script>
+
+        <script>
+            let sub = new Object();
+            sub.name="웹프로그래밍";
+            sub.eng_name="Web Programming";
+            sub.classCode="V024003";
+            sub.nStudent=0;
+            sub.register=register;
+            sub.unregister=unregister;
+            sub.getStudentCount=getStudentCount;
+
+            //리터럴 표기법 객체
+            let sub2 = {
+                name : "클라우드컴퓨팅",
+                eng_name : "Cloud Computing",
+                classCode : "V024003",
+                nStudent : 0,
+
+                register : function(){this.nStudent++; },
+                unregister : function(){this.nStudent--; },
+                getStudentCount : function(){return this.nStudent;}
+            };
+        </script>
+
+        <script>
+            //프로토타입
+            function sub3(name, eng_name, code, nStudent){
+                this.name = name;
+                this.eng_name = eng_name;
+                this.code=code;
+                this.nStudent=nStudent;
+
+                this.register = function(){this.nStudent++; }
+                this.unregister = function(){this.nStudent--; }
+                this.getStudentCount = function(){return this.nStudent;}
+            }
+
+        </script>
+    </head>
+    <body>
+
+        <h3>1. 직접 객체 만들기</h3>
+        <script>
+            document.write("교과목 이름 = "+sub.name+"<br>");
+            document.write("교과목 영문 이름 = "+sub.eng_name+"<br>");
+            document.write("등록 학생 수 = "+sub.nStudent+"<br>");
+            sub.register();
+            document.write("after register, 등록 학생 수 = ");
+            document.write(sub.nStudent+"<br>");
+        </script>
+        <hr>
+
+        <h3>2. 리터럴 표기법</h3>
+            <script>
+            document.write("교과목 이름 = "+sub2.name+"<br>");
+            document.write("교과목 영문 이름 = "+sub2.eng_name+"<br>");
+            document.write("등록 학생 수 = "+sub2.nStudent+"<br>");
+            sub2.register();
+            document.write("after register, 등록 학생 수 = ");
+            document.write(sub2.nStudent+"<br>");
+            </script>
+            
+        <hr>
+        <h3>3. Prototype</h3>
+            <script>
+                var sub3=new sub3("프로그래밍언어론","Programming Langauges","V024003",0);
+                document.write("교과목 이름 = "+sub3.name+"<br>");
+                document.write("교과목 영문 이름 = "+sub3.eng_name+"<br>");
+                document.write("등록 학생 수 = "+sub3.nStudent+"<br>");
+                sub3.register();
+                document.write("after register, 등록 학생 수 = ");
+                document.write(sub3.nStudent+"<br>");
+            </script>
+    </body>
+</html>
